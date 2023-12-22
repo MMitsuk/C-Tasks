@@ -1,6 +1,3 @@
-﻿// ConsoleApplication17.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
-//
-
 #include <iostream>
 #include <math.h>
 #include <iomanip>
