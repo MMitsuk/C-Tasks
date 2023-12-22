@@ -49,7 +49,7 @@ int main()
 long double convertation(long double grad)
 {
     long double radian;
-    radian = grad * 0.00555555555 * M_PI;
+    radian = (grad * M_PI)/180;
     return radian;
 }
 void function_output(float radian)
