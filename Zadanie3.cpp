@@ -7,6 +7,7 @@ int main()
 {
     int n;
     setlocale(LC_ALL, "Russian");
+    srand(time(NULL));
     while (1)
     {
         cout << "Введите количество чисел: ";
