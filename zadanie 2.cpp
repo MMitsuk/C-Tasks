@@ -1,7 +1,7 @@
 #include <iostream>
 #include <math.h>
 #include <iomanip>
-#define M_PI 3.14159265358979323846;
+#define M_PI 3.14159265358979323846
 using namespace std;
 
 void function_output(float radian);
