@@ -4,11 +4,9 @@
 using namespace std;
 int srandom();
 void print(int number);
-uint16_t crc16_ccitt(vector<uint8_t> data, size_t length) 
+uint16_t crc16_ccitt(vector<uint8_t> data, size_t length, uint16_t crc = 0x1D0F) 
 {
     const uint16_t polynomial = 0x1021;
-    uint16_t crc = 0x1D0F;
-
     for (size_t i = 0; i < length; ++i) 
     {
         crc ^= static_cast<uint16_t>(data[i]) << 8;
@@ -43,9 +41,15 @@ int main()
             cin.ignore();
             goto start;
         }
+        cout << endl << "DEC: " << endl;
         for (int i = 0; i < n; i++)
         {
             number.push_back(srandom());
+            cout << dec << number[i] << endl;
+        }
+        cout << endl << "HEX: " << endl;
+        for (int i = 0; i < n; i++)
+        {
             print(number[i]);
         }
         for (int i = number.size(); i > 0; i--)
@@ -56,7 +60,6 @@ int main()
                 number[i-1]/=256;
             }
         }
-        
                 size_t length = data.size();
 
                 uint16_t result = crc16_ccitt(data, length);
@@ -67,10 +70,11 @@ int main()
 
 int srandom()
 {
-    return rand();
+    return rand()%32000;
 }
 
 void print(int number)
 {
-    cout << hex << number << endl;
+    if(number/256 < 16){cout << hex << "0" << number << endl;}
+    else cout << hex << number << endl;
 }
