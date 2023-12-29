@@ -21,8 +21,8 @@ int main()
         char c;
         long double sum;
 
-        cout << "Введите выражение вида a + b\nДоступные функции: +,-,/,*\n";
-        cin >> a >> c >> b;
+        cout << "Введите выражение вида a b\nДоступные функции: +,-,/,*\n";
+        cin >> a >> b;
 
         if (is_digits(a) == false)                                                  //Проверка входных значений
         {
@@ -35,14 +35,26 @@ int main()
 
         if (a.find(".") == std::string::npos && b.find(".") == std::string::npos)   //Проверка целое ли число
         {
-            sum = calculate(int(a1), int(b1), c);
+            sum = calculate(int(a1), int(b1), '+');
+            cout << "+: "<< sum << endl;
+            sum = calculate(int(a1), int(b1), '-');
+            cout << "-: "<< sum << endl;
+            sum = calculate(int(a1), int(b1), '*');
+            cout << "*: "<< sum << endl;
+            sum = calculate(a1, b1, '/');
+            cout <<"/: "<< sum << endl;
+            
         }
-        else sum = calculate(a1, b1, c);
+        else {sum = calculate(a1, b1, '+');
+             cout << "+: "<< sum << endl;
+             sum = calculate(a1, b1, '-');
+             cout << "-: "<< sum << endl;
+             sum = calculate(a1, b1, '*');
+             cout << "*: "<< sum << endl;
+             sum = calculate(a1, b1, '/');
+             cout <<"/: "<< sum << endl;
+        }
 
-        cout << sum << endl << "Нажмите любую клавишу, чтобы продолжить, ESC для выхода из программы\n";
-
-        c = _getch();
-        if (c == 27) return 0;
     }
 }
 
