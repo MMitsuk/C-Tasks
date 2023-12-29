@@ -1,10 +1,10 @@
-﻿#include <iostream>
+#include <iostream>
 #include <cstdint>
 #include <vector>
 using namespace std;
-int random();
+int srandom();
 void print(int number);
-uint16_t crc16_ccitt(const vector<uint8_t> data, size_t length) 
+uint16_t crc16_ccitt(vector<uint8_t> data, size_t length) 
 {
     const uint16_t polynomial = 0x1021;
     uint16_t crc = 0x1D0F;
@@ -28,7 +28,8 @@ int main()
     srand(time(NULL));
 
     vector<uint8_t> data;
-    int n;
+    vector<int> number;
+    int n, k;
 
     while (1)
     {
@@ -44,33 +45,32 @@ int main()
         }
         for (int i = 0; i < n; i++)
         {
-            int number = random();
-            cout << dec << number << endl;
-            print(number);
-
+            number.push_back(srandom());
+            print(number[i]);
+        }
+        for (int i = number.size(); i > 0; i--)
+        {
+            while (number[i-1] != 0)
             {
-                while (number != 0) 
-                {
-                    data.insert(data.begin(), uint8_t(number%256));
-                    number/=256;
-                }
-
+                data.insert(data.begin(),uint8_t(number[i-1]%256));
+                number[i-1]/=256;
+            }
+        }
+        
                 size_t length = data.size();
 
                 uint16_t result = crc16_ccitt(data, length);
                 cout << endl << "CRC-16/AUG-CCITT для заданного числа: " << result << endl;
                 data.clear();
-            }
-        }
     }
 }
 
-int random()
+int srandom()
 {
     return rand();
 }
 
 void print(int number)
 {
-    cout << hex << number;
+    cout << hex << number << endl;
 }
