@@ -63,8 +63,9 @@ int main()
                 size_t length = data.size();
 
                 uint16_t result = crc16_ccitt(data, length);
-                cout << endl << "CRC-16/AUG-CCITT для заданного числа: " << result << endl;
+                cout << endl << "CRC-16/AUG-CCITT для заданного массива чисел: " << result << endl;
                 data.clear();
+        number.clear;
     }
 }
 
