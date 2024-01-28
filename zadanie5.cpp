@@ -65,7 +65,7 @@ int main()
                 uint16_t result = crc16_ccitt(data, length);
                 cout << endl << "CRC-16/AUG-CCITT для заданного массива чисел: " << result << endl;
                 data.clear();
-        number.clear;
+                number.clear();
     }
 }
 
